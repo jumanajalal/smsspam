@@ -1,4 +1,4 @@
-import pandas as pd
+'''import pandas as pd
 import pickle
 
 from sklearn.model_selection import train_test_split
@@ -41,4 +41,4 @@ print(classification_report(y_test, y_pred))
 with open("model.pkl", "wb") as f:
     pickle.dump(pipeline, f)
 
-print("Model saved successfully.")
+print("Model saved successfully.")'''

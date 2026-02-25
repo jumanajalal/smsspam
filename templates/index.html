@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SMS Spam Detector</title>
+    <title>SMS Spam Detection</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
+    <div class="container">
+        <h1>📩 SMS Spam Detection</h1>
+        <p class="tagline">Vintage Intelligence. Modern Protection.</p>
 
-<div class="container">
-    <h1>📩 SMS Spam Detection</h1>
-    <p class="subtitle">Vintage Intelligence. Modern Protection.</p>
+        <!-- FORM -->
+        <form method="POST">
+            <!-- IMPORTANT: textarea is EMPTY after submit -->
+            <textarea 
+                name="message" 
+                rows="4" 
+                placeholder="Enter your SMS here..." 
+                required></textarea>
 
-    <form method="POST">
-        <textarea name="message" placeholder="Enter your SMS here..." required></textarea>
-        <button type="submit">Analyze Message</button>
-    </form>
+            <button type="submit">Analyze Message</button>
+        </form>
 
-    {% if prediction %}
-        <div class="result">
-            <h2>{{ prediction }}</h2>
-            <p>Confidence: {{ confidence }}%</p>
+        <!-- RESULT SECTION -->
+        {% if prediction %}
+        <div class="result fade-in">
+
+            <!-- Prediction -->
+            <div class="{% if 'Spam' in prediction %}spam{% else %}ham{% endif %}">
+                {{ prediction }}
+            </div>
+
+            <!-- Confidence -->
+            <div class="confidence">
+                Confidence: {{ confidence }}%
+            </div>
+
+            <!-- Entered SMS (NOT a textarea anymore) -->
+            <div class="input-text">
+                <strong>Entered SMS:</strong>
+                <p class="entered-message">
+                    {{ message }}
+                </p>
+            </div>
+
         </div>
-    {% endif %}
-</div>
+        {% endif %}
 
+    </div>
 </body>
 </html>

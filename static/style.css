@@ -1,70 +1,152 @@
+/* ===============================
+   VINTAGE PASTEL AESTHETIC THEME
+   =============================== */
+
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* BODY WITH PASTEL GRADIENT */
 body {
-    background-color: #f4e9dc;
-    font-family: 'Georgia', serif;
-    color: #3e2723;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #f7efe5, #f3e8dd);
+    color: #5a4636;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
+/* SUBTLE GRAIN TEXTURE */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+/* MAIN CARD */
 .container {
-    background: #fff8f0;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 8px 8px 0px #c2a27c;
-    width: 500px;
+    background-color: #fffaf4;
+    padding: 45px;
+    border-radius: 20px;
+    width: 520px;
     text-align: center;
+    box-shadow: 0 15px 35px rgba(140, 110, 90, 0.15);
+    animation: fadeUp 0.8s ease;
+    z-index: 1;
 }
 
+/* TITLE */
 h1 {
-    margin-bottom: 5px;
     font-size: 28px;
+    margin-bottom: 8px;
+    color: #6e5542;
 }
 
-.subtitle {
+/* TAGLINE */
+.tagline {
     font-size: 14px;
-    color: #6d4c41;
-    margin-bottom: 25px;
+    color: #9c7e6a;
+    margin-bottom: 30px;
+    font-style: italic;
 }
 
+/* TEXTAREA */
 textarea {
     width: 100%;
     height: 120px;
-    padding: 10px;
-    border: 2px solid #c2a27c;
-    border-radius: 8px;
-    font-family: Georgia;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #e6d7c9;
+    background-color: #fffdf9;
+    font-size: 14px;
     resize: none;
-    margin-bottom: 15px;
+    outline: none;
+    color: #5a4636;
+    transition: 0.3s ease;
 }
 
+textarea:focus {
+    border-color: #d6bfae;
+    box-shadow: 0 0 10px rgba(214, 191, 174, 0.5);
+}
+
+/* BUTTON */
 button {
-    background-color: #6d4c41;
-    color: white;
-    padding: 10px 20px;
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
     border: none;
-    border-radius: 8px;
-    font-family: Georgia;
+    background-color: #d6bfae;
+    color: #5a4636;
+    font-size: 15px;
     cursor: pointer;
+    transition: 0.3s ease;
 }
 
 button:hover {
-    background-color: #5d4037;
+    background-color: #c9ae9a;
 }
 
+/* RESULT CARD */
 .result {
-    margin-top: 20px;
-    padding: 15px;
-    background: #ede0d4;
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 14px;
+    background-color: #f3e8dd;
+    text-align: left;
+    animation: fadeResult 0.6s ease-in-out;
+}
+
+/* SPAM */
+.spam {
+    color: #b76e79;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* HAM */
+.ham {
+    color: #6f8f72;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* CONFIDENCE */
+.confidence {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #7a5e4b;
+}
+
+/* ENTERED TEXT */
+.input-text {
+    margin-top: 14px;
+    font-size: 13px;
+    background-color: #fffdf9;
+    padding: 12px;
     border-radius: 10px;
+    border: 1px solid #e6d7c9;
+    color: #6a5442;
 }
 
-.container {
-    animation: fadeIn 1s ease-in;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+/* ANIMATIONS */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeResult {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
