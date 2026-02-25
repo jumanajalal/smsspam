@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, roc_auc_score
 from sklearn.metrics import precision_recall_curve, average_precision_score
 from features import CustomFeatures
+from utils import normalize_text
 
 param_grid = {
     "clf__estimator__C": [0.1, 1, 10],
@@ -33,34 +34,6 @@ inner_cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, stratify=y, random_state=42
 )
-
-import re
-import unicodedata
-def normalize_text(text):
-    # Lowercase
-    text = text.lower()
-
-    # Remove excessive spacing (w i n → win)
-    text = re.sub(r"\s+", " ", text)
-    text = re.sub(r"(.)\s+(?=\1)", r"\1", text)
-
-    # Replace common leetspeak
-    replacements = {
-        "@": "a",
-        "3": "e",
-        "1": "i",
-        "0": "o",
-        "$": "s"
-    }
-
-    for k, v in replacements.items():
-        text = text.replace(k, v)
-
-    # Remove weird unicode accents
-    text = unicodedata.normalize("NFKD", text)
-    text = text.encode("ascii", "ignore").decode("utf-8")
-
-    return text
 
 word_tfidf = TfidfVectorizer(
     analyzer="word",

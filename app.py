@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from features import CustomFeatures
 import pickle
+from utils import normalize_text
 
 import re
 import unicodedata
